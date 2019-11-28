@@ -4,12 +4,12 @@
     "version": "1.0",
     "description": "블로그 지수에 영향을 주는 금지어 검사 및 키워드 카운트",
     "icons": {
-        "128": "icon48.png",
-        "48": "icon48.png",
-        "16": "icon16.png"
+        "128": "img_icon48.png",
+        "48": "img_icon48.png",
+        "16": "img_icon16.png"
     },
     "browser_action": {
-        "default_icon": "icon16.png",
+        "default_icon": "img_icon16.png",
         "default_popup": "popup.html"
     }
 }

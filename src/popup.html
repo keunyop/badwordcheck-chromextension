@@ -4,45 +4,30 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="css_bootstrap.min.css">
+    <link rel="stylesheet" href="css_custom.css">
 
     <title>블로그 금지어 검사기</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">블로그 금지어 검사기</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <main role="main" class="container">
-        <form id="contact-form">
+    <div class="row">
+        <div class="col-md-9">
             <div class="form-row">
                 <div class="col mb-3">
-                    <!-- <h4 class="mb-3">블로그 금지어 검사기</h4> -->
-                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                    <textarea class="form-control" id="text" rows="21" style="border: none"
+                        placeholder="검사할 단어나 문장을 입력하세요."></textarea>
                 </div>
             </div>
-            <button class="btn btn-primary btn-block" id="btn-contact-send" type="submit">검사하기</button>
-        </form>
-    </main>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary btn-block" id="btn-check">검사하기</button>
+
+            <p id="scan-result"></p>
+        </div>
+    </div>
 
 
 
@@ -52,8 +37,10 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="jquery-3.4.1.min.js"></script>
-    <script src="bootstrap.min.js"></script>
+    <script src="js_jquery-3.4.1.min.js"></script>
+    <script src="js_bootstrap.min.js"></script>
+
+    <script src="js_popup.js"></script>
 </body>
 
 </html>
