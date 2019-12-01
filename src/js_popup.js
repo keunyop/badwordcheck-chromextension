@@ -16,9 +16,10 @@ $('document').ready(function () {
 // 초기화
 function initialize() {
     $badwordsCard.hide();
-    $keywordsCard.hide();
     $badwordsCount.text(0);
     $badwordsList.empty();
+    $keywordsCard.hide();
+    $keywordsList.empty();
 }
 
 // 검사하기 버튼 클릭
@@ -26,16 +27,12 @@ $('#btn-check').click(function () {
     // 결과 초기화
     initialize();
 
-    var data = {
-        text: $('#text').val()
-    };
-
     $.ajax({
         type: "POST",
         url: "http://localhost:8080/check",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(data)
+        data: JSON.stringify($('#text').val())
     })
         .done(function (responseData) {
             $badwordsCard.show();
