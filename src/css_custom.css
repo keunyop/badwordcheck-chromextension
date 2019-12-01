@@ -5,3 +5,18 @@ body {
   /* padding-top: 4.5rem; */
   padding: 1rem;
 }
+
+.scroll-badwords {
+  max-height: 103px;
+  overflow-y: auto;
+}
+
+.scroll-keywords {
+  max-height: 203px;
+  overflow-y: auto;
+}
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+  width: 0px;
+}

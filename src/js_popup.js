@@ -44,7 +44,7 @@ $('#btn-check').click(function () {
 
                 // 금지어 목록
                 var ul = document.createElement("ul");
-                ul.className = "list-inline";
+                ul.className = "list-inline scroll-badwords";
 
                 // 금지어 카운트
                 var badwordsCount = 0;
@@ -75,7 +75,7 @@ $('#btn-check').click(function () {
 
                 // 키워드 목록
                 var ul = document.createElement("ul");
-                ul.className = "list-inline";
+                ul.className = "list-inline scroll-keywords";
 
                 keywordsMap.forEach(function (value, key) {
                     var span = document.createElement("span");
