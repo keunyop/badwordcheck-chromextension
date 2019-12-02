@@ -2,6 +2,7 @@ var $badwordsCard = $('#badwords-card');
 var $badwordsCount = $('#badwords-count');
 var $badwordsList = $('#badwords-list');
 var $keywordsCard = $('#keywords-card');
+var $keywordsCount = $('#keywords-count');
 var $keywordsList = $('#keywords-list');
 
 
@@ -19,6 +20,7 @@ function initialize() {
     $badwordsCount.text(0);
     $badwordsList.empty();
     $keywordsCard.hide();
+    $keywordsCount.text(0);
     $keywordsList.empty();
 }
 
@@ -29,7 +31,7 @@ $('#btn-check').click(function () {
 
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/check",
+        url: "http://localhost:8081/check",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify($('#text').val())
@@ -77,7 +79,11 @@ $('#btn-check').click(function () {
                 var ul = document.createElement("ul");
                 ul.className = "list-inline scroll-keywords";
 
+                // 키워드 카운트
+                var keywordsCount = 0;
                 keywordsMap.forEach(function (value, key) {
+                    keywordsCount += +value;
+
                     var span = document.createElement("span");
                     span.style.color = "blue";
                     span.innerHTML = "&bull; ";
@@ -89,6 +95,7 @@ $('#btn-check').click(function () {
                     ul.appendChild(li);
                 });
 
+                $keywordsCount.text(keywordsCount);
                 $keywordsList.append(ul);
             }
         })
