@@ -1,3 +1,5 @@
+var $textarea = $('#text');
+var $btnCheck = $('#btn-check');
 var $badwordsCard = $('#badwords-card');
 var $badwordsCount = $('#badwords-count');
 var $badwordsList = $('#badwords-list');
@@ -6,12 +8,20 @@ var $keywordsCount = $('#keywords-count');
 var $keywordsList = $('#keywords-list');
 
 
+
 // Popup open event
 $('document').ready(function () {
-    $('#text').focus();
+    $textarea.focus();
 
     // 결과 초기화
     initialize();
+
+    chrome.storage.sync.get('text', function (response) {
+        if (response.text) {
+            $textarea.val(response.text);
+            check(true);
+        }
+    });
 });
 
 // 초기화
@@ -26,6 +36,17 @@ function initialize() {
 
 // 검사하기 버튼 클릭
 $('#btn-check').click(function () {
+    check();
+});
+
+function check(isPopupOpen) {
+    const text = $textarea.val();
+
+    if (!isPopupOpen) {
+        // Chrome stroage 저장
+        chrome.storage.sync.set({ 'text': text });
+    }
+
     // 결과 초기화
     initialize();
 
@@ -35,7 +56,7 @@ $('#btn-check').click(function () {
         url: "http://52.35.43.187:8081/check",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-        data: JSON.stringify($('#text').val())
+        data: JSON.stringify(text)
     })
         .done(function (responseData) {
             $badwordsCard.show();
@@ -99,8 +120,10 @@ $('#btn-check').click(function () {
                 $keywordsCount.text(keywordsCount);
                 $keywordsList.append(ul);
             }
+
+
         })
         .fail(function (error) {
             console.log(error);
         });
-});
+}

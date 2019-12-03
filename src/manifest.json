@@ -14,6 +14,7 @@
     },
     "permissions": [
         "http://localhost/",
-        "http://52.35.43.187/"
+        "http://52.35.43.187/",
+        "storage"
     ]
 }
