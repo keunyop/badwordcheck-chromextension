@@ -16,6 +16,7 @@ $('document').ready(function () {
     // 결과 초기화
     initialize();
 
+    // Chrome stroage 조회
     chrome.storage.sync.get('text', function (response) {
         if (response.text) {
             $textarea.val(response.text);
