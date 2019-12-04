@@ -1,7 +1,7 @@
 /* Show it is fixed to the top */
 body {
-  min-height: 36rem;
-  min-width: 50rem;
+  min-height: 600px;
+  min-width: 800px;
   /* padding-top: 4.5rem; */
   padding: 1rem;
 }
@@ -19,4 +19,10 @@ body {
 /* Scrollbar width */
 ::-webkit-scrollbar {
   width: 0px;
+}
+
+.title-footer {
+  margin-top: 8px;
+  margin-bottom: -30px;
+  width: 100%;
 }

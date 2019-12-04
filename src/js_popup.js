@@ -6,6 +6,7 @@ var $badwordsList = $('#badwords-list');
 var $keywordsCard = $('#keywords-card');
 var $keywordsCount = $('#keywords-count');
 var $keywordsList = $('#keywords-list');
+var $textCount = $('#text-count');
 
 
 
@@ -20,9 +21,12 @@ $('document').ready(function () {
     chrome.storage.sync.get('text', function (response) {
         if (response.text) {
             $textarea.val(response.text);
+            $textCount.text($textarea.val().length);
             check(true);
         }
     });
+
+    $textCount.text(textCount());
 });
 
 // 초기화
@@ -128,3 +132,8 @@ function check(isPopupOpen) {
             console.log(error);
         });
 }
+
+// Text 글자수 카운트
+$textarea.on('keyup propertychange paste', function () {
+    $textCount.text($textarea.val().length);
+});
