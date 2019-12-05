@@ -22,6 +22,7 @@
         "http://localhost/",
         "http://52.35.43.187/",
         "storage",
-        "contextMenus"
+        "contextMenus",
+        "notifications"
     ]
 }

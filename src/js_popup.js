@@ -26,7 +26,7 @@ $('document').ready(function () {
         }
     });
 
-    $textCount.text(textCount());
+    $textCount.text($textarea.val().length);
 });
 
 // 초기화
@@ -41,7 +41,15 @@ function initialize() {
 
 // 검사하기 버튼 클릭
 $('#btn-check').click(function () {
-    check();
+    // 결과 초기화
+    initialize();
+
+    if ($textarea.val()) {
+        check();
+    } 
+    else {
+        $textarea.focus();
+    }
 });
 
 function check(isPopupOpen) {
@@ -51,9 +59,6 @@ function check(isPopupOpen) {
         // Chrome stroage 저장
         chrome.storage.sync.set({ 'text': text });
     }
-
-    // 결과 초기화
-    initialize();
 
     $.ajax({
         type: "POST",
