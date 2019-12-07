@@ -50,15 +50,18 @@ $('#btn-check').click(function () {
     else {
         $textarea.focus();
     }
+
+    // Chrome stroage 저장
+    chrome.storage.sync.set({ 'text': $textarea.val() });
 });
 
 function check(isPopupOpen) {
-    const text = $textarea.val();
+    // const text = $textarea.val();
 
-    if (!isPopupOpen) {
-        // Chrome stroage 저장
-        chrome.storage.sync.set({ 'text': text });
-    }
+    // if (!isPopupOpen) {
+    //     // Chrome stroage 저장
+    //     chrome.storage.sync.set({ 'text': text });
+    // }
 
     $.ajax({
         type: "POST",
@@ -66,7 +69,7 @@ function check(isPopupOpen) {
         url: "http://52.35.43.187:8081/check",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(text)
+        data: JSON.stringify($textarea.val())
     })
         .done(function (responseData) {
             $badwordsCard.show();
@@ -101,6 +104,10 @@ function check(isPopupOpen) {
 
             } else {
                 $badwordsList.text('완벽합니다!');
+            }
+
+            if (isPopupOpen) {
+                
             }
 
             // 키워드 있을때
