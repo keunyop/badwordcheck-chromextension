@@ -22,7 +22,8 @@ $('document').ready(function () {
         if (response.text) {
             $textarea.val(response.text);
             $textCount.text($textarea.val().length);
-            check(true);
+            // check(true);
+            check();
         }
     });
 
@@ -46,23 +47,19 @@ $('#btn-check').click(function () {
 
     if ($textarea.val()) {
         check();
-    } 
+    }
     else {
         $textarea.focus();
+
+        // Chrome stroage 저장
+        chrome.storage.sync.set({ 'badwordsCount': '' });
     }
 
     // Chrome stroage 저장
     chrome.storage.sync.set({ 'text': $textarea.val() });
 });
 
-function check(isPopupOpen) {
-    // const text = $textarea.val();
-
-    // if (!isPopupOpen) {
-    //     // Chrome stroage 저장
-    //     chrome.storage.sync.set({ 'text': text });
-    // }
-
+function check() {
     $.ajax({
         type: "POST",
         // url: "http://localhost:8081/check",
@@ -102,13 +99,16 @@ function check(isPopupOpen) {
                 $badwordsCount.text(badwordsCount);
                 $badwordsList.append(ul);
 
+                // Chrome stroage 저장
+                chrome.storage.sync.set({ 'badwordsCount': badwordsCount });
+
             } else {
                 $badwordsList.text('완벽합니다!');
+
+                // Chrome stroage 저장
+                chrome.storage.sync.set({ 'badwordsCount': '' });
             }
 
-            if (isPopupOpen) {
-                
-            }
 
             // 키워드 있을때
             if (responseData.keywords) {
