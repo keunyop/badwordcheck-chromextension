@@ -62,8 +62,8 @@ $('#btn-check').click(function () {
 function check() {
     $.ajax({
         type: "POST",
-        // url: "http://localhost:8081/check",
-        url: "http://52.35.43.187:8081/check",
+        url: "http://localhost:8081/check",
+        // url: "http://52.35.43.187:8081/check",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify($textarea.val())
