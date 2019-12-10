@@ -62,8 +62,8 @@ $('#btn-check').click(function () {
 function check() {
     $.ajax({
         type: "POST",
-        url: "http://localhost:8081/check",
-        // url: "http://52.35.43.187:8081/check",
+        // url: "http://localhost:8081/check",
+        url: "http://52.35.43.187:8081/check",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify($textarea.val())
@@ -89,9 +89,15 @@ function check() {
                     span.style.color = "red";
                     span.innerHTML = "&bull; ";
 
+                    var anchor = document.createElement("a");
+                    anchor.setAttribute("href", "#");
+                    anchor.setAttribute("class", "badword");
+                    anchor.innerText = key + " : " + value;
+
                     var li = document.createElement("li");
                     li.appendChild(span);
-                    li.appendChild(document.createTextNode(key + " : " + value));
+                    li.appendChild(anchor);
+                    // li.appendChild(document.createTextNode(key + " : " + value));
 
                     ul.appendChild(li);
                 });
@@ -118,23 +124,25 @@ function check() {
                 var ul = document.createElement("ul");
                 ul.className = "list-inline scroll-keywords";
 
-                // 키워드 카운트
-                var keywordsCount = 0;
                 keywordsMap.forEach(function (value, key) {
-                    keywordsCount += +value;
-
                     var span = document.createElement("span");
                     span.style.color = "blue";
                     span.innerHTML = "&bull; ";
 
+                    var anchor = document.createElement("a");
+                    anchor.setAttribute("href", "#");
+                    anchor.setAttribute("class", "keyword");
+                    anchor.innerText = key + " : " + value;
+
                     var li = document.createElement("li");
                     li.appendChild(span);
-                    li.appendChild(document.createTextNode(key + " : " + value));
+                    li.appendChild(anchor);
+                    // li.appendChild(document.createTextNode(key + " : " + value));
 
                     ul.appendChild(li);
                 });
 
-                $keywordsCount.text(keywordsCount);
+                $keywordsCount.text(keywordsMap.size);
                 $keywordsList.append(ul);
             }
 

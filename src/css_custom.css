@@ -26,3 +26,20 @@ body {
   margin-bottom: -30px;
   width: 100%;
 }
+
+a {
+  color: #000000;
+}
+
+a:hover {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.badword:hover {
+  color: #dc3545;
+}
+
+.keyword:hover {
+  color: #007bff;
+}
