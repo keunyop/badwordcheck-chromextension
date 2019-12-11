@@ -97,7 +97,6 @@ function check() {
                     var li = document.createElement("li");
                     li.appendChild(span);
                     li.appendChild(anchor);
-                    // li.appendChild(document.createTextNode(key + " : " + value));
 
                     ul.appendChild(li);
                 });
@@ -137,7 +136,6 @@ function check() {
                     var li = document.createElement("li");
                     li.appendChild(span);
                     li.appendChild(anchor);
-                    // li.appendChild(document.createTextNode(key + " : " + value));
 
                     ul.appendChild(li);
                 });
