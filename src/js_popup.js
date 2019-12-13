@@ -86,7 +86,7 @@ function check() {
                     badwordsCount += +value;
 
                     var span = document.createElement("span");
-                    span.style.color = "red";
+                    span.style.color = "#dc3545";
                     span.innerHTML = "&bull; ";
 
                     var anchor = document.createElement("a");
@@ -125,7 +125,7 @@ function check() {
 
                 keywordsMap.forEach(function (value, key) {
                     var span = document.createElement("span");
-                    span.style.color = "blue";
+                    span.style.color = "#28a745";
                     span.innerHTML = "&bull; ";
 
                     var anchor = document.createElement("a");
