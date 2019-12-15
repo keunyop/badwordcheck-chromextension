@@ -43,3 +43,7 @@ a:hover {
 .keyword:hover {
   color: #28a745;
 }
+
+.search-count {
+  font-size: 11px;
+}

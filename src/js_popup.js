@@ -6,7 +6,9 @@ var $badwordsList = $('#badwords-list');
 var $keywordsCard = $('#keywords-card');
 var $keywordsCount = $('#keywords-count');
 var $keywordsList = $('#keywords-list');
+var $keywordSearchCountList = $('#keyword-search-count-list');
 var $textCount = $('#text-count');
+
 
 
 
@@ -38,6 +40,7 @@ function initialize() {
     $keywordsCard.hide();
     $keywordsCount.text(0);
     $keywordsList.empty();
+    $keywordSearchCountList.empty();
 }
 
 // 검사하기 버튼 클릭
@@ -123,7 +126,12 @@ function check() {
                 var ul = document.createElement("ul");
                 ul.className = "list-inline scroll-keywords";
 
+                // 키워드 검색량
+                var ul2 = document.createElement("ul");
+                ul2.className = "list-inline scroll-keywords";
+
                 keywordsMap.forEach(function (value, key) {
+                    // 키워드
                     var span = document.createElement("span");
                     span.style.color = "#28a745";
                     span.innerHTML = "&bull; ";
@@ -138,13 +146,23 @@ function check() {
                     li.appendChild(anchor);
 
                     ul.appendChild(li);
+
+                    // 키워드 검색량
+                    var anchor2 = document.createElement("a");
+                    anchor2.setAttribute("href", "#");
+                    anchor2.setAttribute("class", "search-count");
+                    anchor2.innerText = "검색량조회";
+
+                    var li2 = document.createElement("li");
+                    li2.appendChild(anchor2);
+
+                    ul2.appendChild(li2);
                 });
 
                 $keywordsCount.text(keywordsMap.size);
                 $keywordsList.append(ul);
+                $keywordSearchCountList.append(ul2);
             }
-
-
         })
         .fail(function (error) {
             console.log(error);
