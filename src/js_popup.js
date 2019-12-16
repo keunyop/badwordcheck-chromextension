@@ -95,6 +95,7 @@ function check() {
                     var anchor = document.createElement("a");
                     anchor.setAttribute("href", "#");
                     anchor.setAttribute("class", "badword");
+                    anchor.setAttribute("word", key);
                     anchor.innerText = key + " : " + value;
 
                     var li = document.createElement("li");
@@ -104,11 +105,18 @@ function check() {
                     ul.appendChild(li);
                 });
 
+
                 $badwordsCount.text(badwordsCount);
                 $badwordsList.append(ul);
 
                 // Chrome stroage 저장
                 chrome.storage.sync.set({ 'badwordsCount': badwordsCount });
+
+                // 금지어 클릭
+                $(".badword").on("click", function (event) {
+                    var badword = event.currentTarget.attributes.word.value;
+                    highlightWords(badword);
+                });
 
             } else {
                 $badwordsList.text('완벽합니다!');
@@ -173,3 +181,9 @@ function check() {
 $textarea.on('keyup propertychange paste', function () {
     $textCount.text($textarea.val().length);
 });
+
+function highlightWords(word) {
+    // $textarea.val(function(i, v) {
+    //     return v.replace(word, '<span class="badwordString">' + word + '</span>');
+    // });
+}

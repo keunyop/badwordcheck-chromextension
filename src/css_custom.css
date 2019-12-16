@@ -47,3 +47,7 @@ a:hover {
 .search-count {
   font-size: 11px;
 }
+
+.badwordString {
+  color: #dc3545;
+}
