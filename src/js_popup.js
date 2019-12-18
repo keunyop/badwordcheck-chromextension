@@ -8,6 +8,7 @@ var $keywordsCount = $('#keywords-count');
 var $keywordsList = $('#keywords-list');
 var $keywordSearchCountList = $('#keyword-search-count-list');
 var $textCount = $('#text-count');
+var $badwordsProgressbar = $('#badwords-progressbar');
 
 
 
@@ -41,6 +42,7 @@ function initialize() {
     $keywordsCount.text(0);
     $keywordsList.empty();
     $keywordSearchCountList.empty();
+    $badwordsProgressbar.width("100%");
 }
 
 // 검사하기 버튼 클릭
@@ -108,6 +110,9 @@ function check() {
 
                 $badwordsCount.text(badwordsCount);
                 $badwordsList.append(ul);
+
+                // 금지어 Progress bar
+                $badwordsProgressbar.width(badwordsCount >= 10 ? 10 : (10 - badwordsCount) * 10 + "%");
 
                 // Chrome stroage 저장
                 chrome.storage.sync.set({ 'badwordsCount': badwordsCount });
