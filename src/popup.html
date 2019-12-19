@@ -34,14 +34,16 @@
         <div class="col-md-4">
             <button class="btn btn-success btn-block" id="btn-check">검사하기</button>
             <br>
-            <div class="card shadow" id="badwords-card">
+            <div class="card shadow collapse" id="badwords-card">
                 <div class="card-body">
                     <h5 class="card-title">
                         금지어 <span id="badwords-count"></span>개
+                        <a href="#" id="btn-badwords-toggle" style="float: right;">∧</a>
+                        <spa>
                     </h5>
                     <div class="progress" style="height: 3px; margin-bottom: 7px;">
-                        <div class="progress-bar bg-danger" id="badwords-progressbar" role="progressbar" style="width: 100%;" aria-valuenow="100"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-danger" id="badwords-progressbar" role="progressbar"
+                            style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div id="badwords-list"></div>
                 </div>
@@ -51,14 +53,15 @@
                 <div class="card-body">
                     <h5 class="card-title">
                         키워드 <span id="keywords-count"></span>개
+                        <a href="#" id="btn-keywords-toggle" style="float: right;">∧</a>
                     </h5>
                     <div class="progress" style="height: 3px; margin-bottom: 7px;">
                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    
 
-                    <div class="row">
+
+                    <div class="row" id="keywords-list-toggle">
                         <div class="col-md-7">
                             <div id="keywords-list"></div>
                         </div>

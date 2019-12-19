@@ -9,6 +9,8 @@ var $keywordsList = $('#keywords-list');
 var $keywordSearchCountList = $('#keyword-search-count-list');
 var $textCount = $('#text-count');
 var $badwordsProgressbar = $('#badwords-progressbar');
+var $btnBadwordsToggle = $('#btn-badwords-toggle');
+var $btnKeywordsToggle = $('#btn-keywords-toggle');
 
 
 
@@ -46,7 +48,8 @@ function initialize() {
 }
 
 // 검사하기 버튼 클릭
-$('#btn-check').click(function () {
+$btnCheck.click(function () {
+
     // 결과 초기화
     initialize();
 
@@ -62,6 +65,24 @@ $('#btn-check').click(function () {
 
     // Chrome stroage 저장
     chrome.storage.sync.set({ 'text': $textarea.val() });
+});
+
+// 금지어 Toggle
+$btnBadwordsToggle.click(function () {
+    $badwordsList.toggle('fast');
+
+    $btnBadwordsToggle.text() === "∧" ?
+        $btnBadwordsToggle.text("∨") :
+        $btnBadwordsToggle.text("∧");
+});
+
+// 키워드 Toggle
+$btnKeywordsToggle.click(function () {
+    $('#keywords-list-toggle').toggle('fast');
+
+    $btnKeywordsToggle.text() === "∧" ?
+        $btnKeywordsToggle.text("∨") :
+        $btnKeywordsToggle.text("∧");
 });
 
 function check() {
