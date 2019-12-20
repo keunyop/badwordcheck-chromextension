@@ -6,7 +6,7 @@ var $badwordsList = $('#badwords-list');
 var $keywordsCard = $('#keywords-card');
 var $keywordsCount = $('#keywords-count');
 var $keywordsList = $('#keywords-list');
-var $keywordSearchCountList = $('#keyword-search-count-list');
+var $keywordSearchCountList = $('#keyword-search-amount-list');
 var $textCount = $('#text-count');
 var $badwordsProgressbar = $('#badwords-progressbar');
 var $btnBadwordsToggle = $('#btn-badwords-toggle');
@@ -184,7 +184,8 @@ function check() {
                     // 키워드 검색량
                     var anchor2 = document.createElement("a");
                     anchor2.setAttribute("href", "#");
-                    anchor2.setAttribute("class", "search-count");
+                    anchor2.setAttribute("class", "search-amount");
+                    anchor2.setAttribute("keyword", key);
                     anchor2.innerText = "검색량조회";
 
                     var li2 = document.createElement("li");
@@ -197,6 +198,12 @@ function check() {
                 $keywordsList.append(ul);
                 $keywordSearchCountList.append(ul2);
             }
+
+            // 키워드 검색량 클릭
+            $(".search-amount").on("click", function (event) {
+                var keyword = event.currentTarget.attributes.keyword.value;
+                getKeywordSearchAmount(keyword);
+            });
         })
         .fail(function (error) {
             console.log(error);
@@ -212,4 +219,8 @@ function highlightWords(word) {
     // $textarea.val(function(i, v) {
     //     return v.replace(word, '<span class="badwordString">' + word + '</span>');
     // });
+}
+
+function getKeywordSearchAmount(keyword) {
+    console.log(keyword);
 }
