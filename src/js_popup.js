@@ -33,6 +33,7 @@ $('document').ready(function () {
     });
 
     $textCount.text($textarea.val().length);
+
 });
 
 // 초기화
@@ -216,9 +217,12 @@ $textarea.on('keyup propertychange paste', function () {
 });
 
 function highlightWords(word) {
-    // $textarea.val(function(i, v) {
-    //     return v.replace(word, '<span class="badwordString">' + word + '</span>');
-    // });
+
+    console.log(word);
+
+    $textarea.highlightWithinTextarea({
+        highlight: word
+    });
 }
 
 function getKeywordSearchAmount(keyword) {
