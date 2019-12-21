@@ -18,6 +18,7 @@
         ],
         "persistent": false
     },
+    "options_page": "options.html",
     "permissions": [
         "http://localhost/",
         "http://52.35.43.187/",
